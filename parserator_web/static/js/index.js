@@ -12,6 +12,10 @@ async function getData(inputString='123%20main%20st%20chicago%20il') {
      });
  }
 
+// I'm going to override the default submit action for the 'Parse!' button
+ document.getElementById("submit").addEventListener("submit", function (e) {
+   e.preventDefault();
+ }
 
 getData();
 // replace spaces with %20 in url request with fetch
