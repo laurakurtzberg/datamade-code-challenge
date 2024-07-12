@@ -8,9 +8,34 @@ async function getAddressData(inputString) {
      })
      .then(response => response.json())
      .then(data => {
-       console.log(data);
+       if (data.error) {
+         console.error(data.error);
+         displayReturnedError(data.error);
+       }
+       // console.log(data);
      });
  }
+
+ // display error returned from the API request in the error div
+ function displayReturnedError(errorMessage) {
+   //document.querySelector("#error-alert > span").innerHTML = errorMessage;
+   //document.getElementById("error-alert").style.display = "block";
+
+   // this pattern is from getbootstrap.com/docs/5.2/components/alerts/#triggers
+   const alertPlaceholder = document.getElementById('alert-placeholder')
+
+   const wrapper = document.createElement('div')
+   wrapper.innerHTML = [
+      `<div class="alert alert-danger alert-dismissible" role="alert">`,
+      `   <div>${errorMessage}</div>`,
+      '   <button type="button" class="close" data-dismiss="alert" aria-label="Close">',
+      '     <span aria-hidden="true">&times;</span>',
+      '   </button>',
+      '</div>'
+    ].join('')
+
+    alertPlaceholder.append(wrapper);
+  }
 
  // display the error message to the UI if address is empty
  function displayEmptyError() {
@@ -41,7 +66,3 @@ async function getAddressData(inputString) {
      displayEmptyError();
    }
  });
-
-//getData();
-// replace spaces with %20 in url request with fetch
-// for example: .../api/parse/?input_string='123%20n%20mai'
