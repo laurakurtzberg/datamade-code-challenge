@@ -34,6 +34,15 @@ WORKDIR /app
 COPY ./requirements.txt /app/requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
+# This is needed to update the OS' package manager so that
+# the current version of node will be installed:
+RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -
+
+RUN apt-get -yq update \
+    && apt-get -yq upgrade \
+    && apt-get install -yq nodejs \
+    && npm --version
+
 # Install Node requirements
 COPY ./package.json /app/package.json
 RUN npm install
