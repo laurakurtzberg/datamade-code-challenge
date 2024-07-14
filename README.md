@@ -1,5 +1,12 @@
 # DataMade Code Challenge: Parserator
 
+## Thank you
+Thank you for considering my submission!
+To see the commits that I merged with my fork as I went, check out the commit history!
+So that the diff for all my changes would be visible in a single pull request, I erased
+and re-added my work! Thank you, - Laura.
+
+## Instructions
 Welcome to the DataMade code challenge! 👋
 
 Your task is to recreate the **address parsing form** in DataMade's
