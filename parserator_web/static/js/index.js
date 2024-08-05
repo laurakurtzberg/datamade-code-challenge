@@ -87,3 +87,4 @@ document.getElementById("addressform").addEventListener("submit", function (e) {
     displayError("Address field is empty, cannot parse");
   }
 });
+
