@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.renderers import JSONRenderer
 # I didn't end up using ParseError
-# from rest_framework.exceptions import ParsaeError
+# from rest_framework.exceptions import ParseError
 
 
 class Home(TemplateView):

@@ -3,9 +3,7 @@
    but wasn't able to fix, and kept function as is */
 async function getAndDisplayAddressData(inputString) {
   const url = "api/parse/?input_string=" + inputString;
-  const response = await fetch(url, {
-    method: "GET",
-  })
+  const response = await fetch(url)
     .then((response) => response.json())
     .then((data) => {
       if (data.error) {
@@ -38,7 +36,7 @@ function displayError(errorMessage) {
 function displayResults(data) {
   // reveal the results table
   document.getElementById("address-results").style.display = "block";
-  console.log(data);
+
   // populate the address type
   document.getElementById("parse-type").innerHTML = data.address_type;
 
@@ -48,7 +46,7 @@ function displayResults(data) {
 
   // populate the tbody
   for (let [part, tag] of Object.entries(data.address_components)) {
-    console.log(part, tag);
+
     let row = document.createElement("tr");
     row.innerHTML = [`<td>${part}</td>`, `<td>${tag}</td>`].join("");
     tableBody.append(row);
