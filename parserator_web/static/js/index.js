@@ -44,12 +44,19 @@ function displayResults(data) {
   const tableBody = document.querySelector("#address-results table tbody");
   tableBody.innerHTML = "";
 
+  // get the reference to the table for populating
+  let tableRef = document.querySelector(".table");
+
   // populate the tbody
   for (let [part, tag] of Object.entries(data.address_components)) {
+    let newRow = tableRef.insertRow(-1);
 
-    let row = document.createElement("tr");
-    row.innerHTML = [`<td>${part}</td>`, `<td>${tag}</td>`].join("");
-    tableBody.append(row);
+    // Insert two new cells for the part and tag, with text content
+    let partCell = newRow.insertCell();
+    partCell.textContent = `${part}`;
+
+    let tagCell = newRow.insertCell();
+    tagCell.textContent = `${tag}`;
   }
 }
 
